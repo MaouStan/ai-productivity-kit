@@ -215,6 +215,7 @@ oracle_search "short codes patterns"
 ## Commands Reference
 
 ### Session Management
+- `/ai-kit:init` - Initialize AI Productivity Kit structure
 - `/ai-kit:start` - Start new session
 - `/ai-kit:focus` - Set current focus
 - `/ai-kit:pause` - Pause session

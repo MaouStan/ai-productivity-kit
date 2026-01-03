@@ -48,6 +48,7 @@ nnn → gogogo → rrr → ccc
 ### Session Management
 | Command | Purpose |
 |---------|---------|
+| `/ai-kit:init` | Initialize AI Productivity Kit structure |
 | `/ai-kit:start` | เริ่ม session ใหม่ |
 | `/ai-kit:focus` | ตั้งโฟกัสงาน |
 | `/ai-kit:pause` | พักงานชั่วคราว |
