@@ -1,3 +1,10 @@
+---
+description: "Track Work Hours | สรุปชั่วโมงทำงานวันนี้ - start/end/week"
+allowed-tools:
+  - Read
+  - Write
+---
+
 # /ai-kit:hours
 
 **Track Work Hours**

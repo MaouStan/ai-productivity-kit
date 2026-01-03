@@ -1,9 +1,20 @@
+---
+description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+allowed-tools:
+  - Bash
+  - Read
+  - Write
+---
+
 # /ai-kit:forward
 
 **Forward Context to Next Session**
 *ส่ง context ไป session ถัดไป ก่อนใช้ /clear*
 
 ## ทำอะไร
+
+**LAST command before `/clear`** - Saves session context so `/recap` can restore it.
+
 1. อ่าน context ปัจจุบันทั้งหมด
 2. สร้าง `ψ/inbox/WIP.md`
 3. เก็บ:
@@ -91,11 +102,21 @@ Implement JWT authentication with refresh tokens
 
 You can now:
 1. /clear → start fresh session
-2. Next session reads WIP.md → continues work
+2. Next session: /recap → continues work from WIP.md
+```
+
+## Session Handoff Workflow
+
+```
+📤 END OF SESSION                   📥 START NEW SESSION
+─────────────────────              ─────────────────────
+/forward  → Save to WIP.md         /recap   → Read WIP.md
+/clear    → Fresh start            ↓
+                                  Continue where you left off
 ```
 
 ## When to Use
-- ก่อน `/clear` (preserve context)
+- **ALWAYS before `/clear`** (preserve context)
 - สลับ project
 - จบ session แต่ยังไม่เสร็จ
 - ก่อนออกจากงาน

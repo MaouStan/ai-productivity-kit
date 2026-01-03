@@ -1,3 +1,11 @@
+---
+description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+allowed-tools:
+  - Bash
+  - Read
+  - Write
+---
+
 # /ai-kit:gogogo
 
 **Execute Most Recent Plan**

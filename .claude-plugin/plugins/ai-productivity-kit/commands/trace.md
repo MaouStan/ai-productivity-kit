@@ -1,3 +1,11 @@
+---
+description: "Search Everything in Project | ค้นหาทุกที่ใน project - git, files, issues, memory"
+allowed-tools:
+  - Bash
+  - Grep
+  - Glob
+---
+
 # /ai-kit:trace
 
 **Search Everything in Project**

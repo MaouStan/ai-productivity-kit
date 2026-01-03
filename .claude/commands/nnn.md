@@ -1,3 +1,11 @@
+---
+description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+allowed-tools:
+  - Bash
+  - Read
+  - Write
+---
+
 # /ai-kit:nnn
 
 **New Plan - Create Implementation Plan**
@@ -47,7 +55,7 @@
 ```
 
 ## AI Instructions
-เมื่อ user พิมพ์ `/nnn [description]`:
+เมื่อ user พิมพ์ `/ai-kit:nnn [description]`:
 
 1. **Check context**:
    - มี context issue ล่าสุดไหม?
@@ -74,7 +82,7 @@
 
 ## Example
 ```
-User: /nnn ทำระบบ refresh token
+User: /ai-kit:nnn ทำระบบ refresh token
 
 AI:
 # Creating Implementation Plan...
@@ -129,7 +137,7 @@ Add refresh token mechanism to existing JWT auth for better security.
 
 ---
 
-Ready to execute? Use /gogogo
+Ready to execute? Use /ai-kit:gogogo
 ```
 
 ## When to Use
@@ -139,7 +147,7 @@ Ready to execute? Use /gogogo
 - ต้องการ track progress
 
 ## Tips
-- `/nnn` จะ auto-run `/ccc` ถ้าไม่มี context
+- `/ai-kit:nnn` จะ auto-run `/ccc` ถ้าไม่มี context
 - Tasks ควรขนาด 1-2 ชั่วโมงต่อ task
 - ใช้ acceptance criteria ชัดเจน
 - Link ไป context issue เสมอ

@@ -1,3 +1,9 @@
+---
+description: "บันทึก pattern ที่ใช้ซ้ำได้ | Record reusable patterns"
+allowed-tools:
+  - Write
+---
+
 # /ai-kit:pattern
 
 **บันทึก pattern ที่ใช้ซ้ำได้**

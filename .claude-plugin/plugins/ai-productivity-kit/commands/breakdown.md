@@ -1,3 +1,10 @@
+---
+description: "แบ่งงานใหญ่เป็น task เล็กๆ | Break complex task into smaller pieces"
+allowed-tools:
+  - TodoWrite
+  - AskUserQuestion
+---
+
 # /ai-kit:breakdown
 
 **แบ่งงานใหญ่เป็น task เล็กๆ**

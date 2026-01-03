@@ -1,3 +1,10 @@
+---
+description: "List Project Status | แสดงสถานะ project ทั้งหมด - issues, PRs, commits, branches"
+allowed-tools:
+  - Bash
+  - AskUserQuestion
+---
+
 # /ai-kit:lll
 
 **List Project Status**

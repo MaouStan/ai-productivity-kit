@@ -1,3 +1,9 @@
+---
+description: "ตั้งค่าโฟกัสงานปัจจุบัน | Set current task focus"
+allowed-tools:
+  - Write
+---
+
 # /ai-kit:focus
 
 **ตั้งค่าโฟกัสงานปัจจุบัน**

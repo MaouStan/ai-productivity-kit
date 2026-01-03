@@ -1,3 +1,11 @@
+---
+description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+allowed-tools:
+  - Bash
+  - Read
+  - Write
+---
+
 # /ai-kit:rrr
 
 **Retro-Reflect-Review - ทบทวนงานที่ทำไป**
@@ -99,7 +107,7 @@ AI:
 - [ ] Add rate limiting
 
 ## Patterns Discovered
-→ Saved to `ψ/memory/patterns/parallel_testing_agent.md`
+Saved to `ψ/memory/patterns/parallel_testing_agent.md`
 
 ## Tags
 `authentication` `jwt` `python` `multi-agent`

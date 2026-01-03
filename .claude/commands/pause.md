@@ -1,3 +1,9 @@
+---
+description: "พักงานชั่วคราว | Pause current work session"
+allowed-tools:
+  - Write
+---
+
 # /ai-kit:pause
 
 **พักงานชั่วคราว**

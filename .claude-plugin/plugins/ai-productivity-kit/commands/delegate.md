@@ -1,3 +1,11 @@
+---
+description: "มอบหมายงานให้ subagent | Delegate task to specialized agent"
+allowed-tools:
+  - Task
+  - Bash
+  - Read
+---
+
 # /ai-kit:delegate
 
 **มอบหมายงานให้ subagent**

@@ -1,3 +1,9 @@
+---
+description: "บันทึก note ด่วน | Quick note capture"
+allowed-tools:
+  - Write
+---
+
 # /ai-kit:note
 
 **บันทึก note ด่วน**

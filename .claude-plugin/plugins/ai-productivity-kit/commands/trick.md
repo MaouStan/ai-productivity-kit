@@ -1,3 +1,9 @@
+---
+description: "บันทึกเทคนิคโค้ดดีๆ | Save useful code tricks"
+allowed-tools:
+  - Write
+---
+
 # /ai-kit:trick
 
 **บันทึกเทคนิคโค้ดดีๆ**

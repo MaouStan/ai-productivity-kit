@@ -1,3 +1,11 @@
+---
+description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+allowed-tools:
+  - Bash
+  - Read
+  - Write
+---
+
 # /ai-kit:ccc
 
 **Create Context Issue + Compact Conversation**
@@ -114,4 +122,4 @@ Compact conversation to save tokens? [y/n]
 ## Tips
 - `/ccc` ทำอัตโนมัติใน `/nnn` ถ้าไม่มี context issue
 - Context issues มี label `context` เพื่อค้นหาง่าย
-- ใช้ร่วมกับ `/forward` เพื่อ save to WIP.md
+- ใช้ร่วมกับ `/ai-kit:forward` เพื่อ save to WIP.md
