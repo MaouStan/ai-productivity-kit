@@ -13,87 +13,110 @@
     {
       "name": "breakdown",
       "prompt": "/ai-kit:breakdown",
-      "description": "Break complex task into smaller pieces with todo list and effort estimation"
+      "description": "Break complex task into smaller pieces with todo list and effort estimation",
+      "allowed-tools": ["TodoWrite", "AskUserQuestion"]
     },
     {
       "name": "ccc",
       "prompt": "/ai-kit:ccc",
-      "description": "Create context issue and compact conversation to save tokens"
+      "description": "Create context issue and compact conversation to save tokens",
+      "allowed-tools": ["Bash", "Read", "Write", "AskUserQuestion"]
     },
     {
       "name": "delegate",
       "prompt": "/ai-kit:delegate",
-      "description": "Delegate task to specialized agent (coder, reviewer, test-writer, etc.)"
+      "description": "Delegate task to specialized agent (coder, reviewer, test-writer, etc.)",
+      "allowed-tools": ["Task", "Bash", "Read"]
     },
     {
       "name": "focus",
       "prompt": "/ai-kit:focus",
-      "description": "Set current task focus in focus.md"
+      "description": "Set current task focus in focus.md",
+      "allowed-tools": ["Write"]
     },
     {
       "name": "forward",
       "prompt": "/ai-kit:forward",
-      "description": "Forward context to next session via WIP.md before /clear"
+      "description": "Forward context to next session via WIP.md before /clear",
+      "allowed-tools": ["Bash", "Read", "Write"]
     },
     {
       "name": "gogogo",
       "prompt": "/ai-kit:gogogo",
-      "description": "Execute most recent plan - checks context first, suggests summary/forward/rrr if stale"
+      "description": "Execute most recent plan - checks context first, suggests summary/forward/rrr if stale",
+      "allowed-tools": ["Bash", "Read", "Write", "AskUserQuestion"]
     },
     {
       "name": "hours",
       "prompt": "/ai-kit:hours",
-      "description": "Track work hours - start/end/week summary"
+      "description": "Track work hours - start/end/week summary",
+      "allowed-tools": ["Read", "Write"]
+    },
+    {
+      "name": "learn",
+      "prompt": "/ai-kit:learn",
+      "description": "Learn from web content or files and generate knowledge + skills",
+      "allowed-tools": ["Bash", "Read", "Write", "WebFetch", "WebSearch"]
     },
     {
       "name": "lll",
       "prompt": "/ai-kit:lll",
-      "description": "List project status - issues, PRs, commits, branches"
+      "description": "List project status - issues, PRs, commits, branches",
+      "allowed-tools": ["Bash", "AskUserQuestion"]
     },
     {
       "name": "nnn",
       "prompt": "/ai-kit:nnn",
-      "description": "Create implementation plan with task breakdown and acceptance criteria"
+      "description": "Create implementation plan with task breakdown and acceptance criteria",
+      "allowed-tools": ["AskUserQuestion", "Bash", "Read", "Write"]
     },
     {
       "name": "note",
       "prompt": "/ai-kit:note",
-      "description": "Quick note capture to memory/logs"
+      "description": "Quick note capture to memory/logs",
+      "allowed-tools": ["Write"]
     },
     {
       "name": "pattern",
       "prompt": "/ai-kit:pattern",
-      "description": "Record reusable patterns to memory/patterns"
+      "description": "Record reusable patterns to memory/patterns",
+      "allowed-tools": ["Write"]
     },
     {
       "name": "pause",
       "prompt": "/ai-kit:pause",
-      "description": "Pause current work session with progress saved"
+      "description": "Pause current work session with progress saved",
+      "allowed-tools": ["Write"]
     },
     {
       "name": "recap",
       "prompt": "/ai-kit:recap",
-      "description": "Fresh start - show current context summary from WIP.md"
+      "description": "Fresh start - show current context summary from WIP.md",
+      "allowed-tools": ["Read"]
     },
     {
       "name": "rrr",
       "prompt": "/ai-kit:rrr",
-      "description": "Session retrospective - what we did, learned, and next steps"
+      "description": "Session retrospective - what we did, learned, and next steps",
+      "allowed-tools": ["Bash", "Read", "Write"]
     },
     {
       "name": "start",
       "prompt": "/ai-kit:start",
-      "description": "Start productive work session with today's plan"
+      "description": "Start productive work session with today's plan",
+      "allowed-tools": ["Read", "Write", "TodoWrite"]
     },
     {
       "name": "trace",
       "prompt": "/ai-kit:trace",
-      "description": "Search everything - git, files, issues, memory"
+      "description": "Search everything - git, files, issues, memory",
+      "allowed-tools": ["Bash", "Grep", "Glob"]
     },
     {
       "name": "trick",
       "prompt": "/ai-kit:trick",
-      "description": "Save useful code tricks to memory/tricks"
+      "description": "Save useful code tricks to memory/tricks",
+      "allowed-tools": ["Write"]
     }
   ],
   "plugins": [

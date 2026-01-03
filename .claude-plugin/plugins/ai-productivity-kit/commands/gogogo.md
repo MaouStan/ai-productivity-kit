@@ -1,9 +1,10 @@
 ---
-description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+description: "Execute most recent plan - checks context first, suggests summary/forward/rrr if stale"
 allowed-tools:
   - Bash
   - Read
   - Write
+  - AskUserQuestion
 ---
 
 # /ai-kit:gogogo

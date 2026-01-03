@@ -1,5 +1,5 @@
 ---
-description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+description: "Session retrospective - what we did, learned, and next steps"
 allowed-tools:
   - Bash
   - Read

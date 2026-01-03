@@ -1,5 +1,5 @@
 ---
-description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+description: "Forward context to next session via WIP.md before /clear"
 allowed-tools:
   - Bash
   - Read

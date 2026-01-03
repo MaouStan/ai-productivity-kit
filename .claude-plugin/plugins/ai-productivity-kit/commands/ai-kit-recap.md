@@ -1,9 +1,7 @@
 ---
-description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+description: "Fresh start - show current context summary from WIP.md"
 allowed-tools:
-  - Bash
   - Read
-  - Write
 ---
 
 # /ai-kit:recap

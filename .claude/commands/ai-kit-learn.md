@@ -1,3 +1,13 @@
+---
+description: "Learn from web content or files and generate knowledge + skills"
+allowed-tools:
+  - Bash
+  - Read
+  - Write
+  - WebFetch
+  - WebSearch
+---
+
 # /ai-kit:learn
 
 **Learn from web content or files and generate knowledge + skills**

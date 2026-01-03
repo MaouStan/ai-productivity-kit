@@ -1,6 +1,7 @@
 ---
-description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+description: "Create implementation plan with task breakdown and acceptance criteria"
 allowed-tools:
+  - AskUserQuestion
   - Bash
   - Read
   - Write

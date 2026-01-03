@@ -1,9 +1,10 @@
 ---
-description: "🔮 Awaken the Oracle - Install commands and agents in your project"
+description: "Create context issue and compact conversation to save tokens"
 allowed-tools:
   - Bash
   - Read
   - Write
+  - AskUserQuestion
 ---
 
 # /ai-kit:ccc
