@@ -1,0 +1,25 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ai-productivity-kit",
+  "version": "1.0.0",
+  "description": "Core agents and commands for Claude Code — workflow automation + project initialization with Thai/English bilingual support",
+  "owner": {
+    "name": "MaouStan",
+    "email": "your-email@example.com"
+  },
+  "homepage": "https://github.com/MaouStan/ai-productivity-kit",
+  "repository": "https://github.com/MaouStan/ai-productivity-kit",
+  "plugins": [
+    {
+      "name": "ai-productivity-kit",
+      "description": "Complete productivity toolkit with 17 commands, 8 skills, agents, and knowledge base for AI-assisted programming workflow automation",
+      "version": "1.0.0",
+      "author": {
+        "name": "MaouStan"
+      },
+      "source": "./plugins/ai-productivity-kit",
+      "category": "productivity",
+      "tags": ["workflow", "automation", "productivity", "thai", "bilingual"]
+    }
+  ]
+}

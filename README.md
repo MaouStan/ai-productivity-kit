@@ -3,6 +3,29 @@
 **เครื่องมือเสริมประสิทธิภาพการเขียนโปรแกรมด้วย AI**
 *Tools for maximizing programming productivity with AI*
 
+## 📦 Installation
+
+### Marketplace (Recommended)
+
+```bash
+# Add marketplace
+/plugin marketplace add MaouStan/ai-productivity-kit
+
+# Install plugin
+/plugin install ai-productivity-kit@MaouStan/ai-productivity-kit
+
+# Restart Claude Code after installation
+```
+
+### Manual Install
+
+```bash
+# Clone or copy to your project
+git clone https://github.com/MaouStan/ai-productivity-kit.git
+cd ai-productivity-kit
+bash install.sh
+```
+
 ## 📖 Overview
 
 ไลบรารีที่รวบรวมเทคนิคและ patterns จาก:

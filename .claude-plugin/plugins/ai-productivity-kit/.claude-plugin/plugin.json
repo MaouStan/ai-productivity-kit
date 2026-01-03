@@ -1,0 +1,10 @@
+{
+  "name": "ai-productivity-kit",
+  "description": "Complete productivity toolkit with 17 commands, 8 skills, and knowledge base for AI-assisted programming workflow automation. Thai/English bilingual support.",
+  "version": "1.0.0",
+  "author": {
+    "name": "MaouStan"
+  },
+  "homepage": "https://github.com/MaouStan/ai-productivity-kit",
+  "repository": "https://github.com/MaouStan/ai-productivity-kit"
+}
