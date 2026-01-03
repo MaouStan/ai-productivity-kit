@@ -1,0 +1,23 @@
+{
+  "name": "ai-productivity-kit",
+  "version": "1.0.0",
+  "description": "เครื่องมือเสริมประสิทธิภาพการเขียนโปรแกรมด้วย AI - Productivity toolkit for programming with AI",
+  "main": "README.md",
+  "scripts": {
+    "init": "node scripts/init.js"
+  },
+  "keywords": [
+    "ai",
+    "productivity",
+    "claude-code",
+    "programming",
+    "thai",
+    "developer-tools"
+  ],
+  "author": "MaouStan",
+  "license": "MIT",
+  "claude": {
+    "type": "plugin",
+    "version": "1.0.0"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ai-productivity-kit",
+  "version": "1.0.0",
+  "description": "เครื่องมือเสริมประสิทธิภาพการเขียนโปรแกรมด้วย AI - Productivity toolkit for AI-assisted programming",
+  "author": "MaouStan",
+  "license": "MIT",
+  "type": "plugin",
+  "platform": "claude-code",
+  "private": true,
+  "keywords": [
+    "ai",
+    "productivity",
+    "claude-code",
+    "programming",
+    "thai",
+    "developer-tools",
+    "workflow",
+    "automation"
+  ],
+  "components": {
+    "commands": 15,
+    "agents": 4,
+    "skills": 8,
+    "knowledge": 6
+  },
+  "installation": {
+    "local": "bash install.sh",
+    "windows": "powershell install.ps1",
+    "skill": "/ai-kit:awaken"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/ai-productivity-kit"
+  },
+  "exports": {
+    "commands": ".claude/commands/*.md",
+    "agents": ".claude/agents/*.md",
+    "skills": ".claude/skills/*.md",
+    "knowledge": ".claude/knowledge/*.md"
+  },
+  "dependencies": {
+    "claude-code": ">=1.0.0"
+  },
+  "sources": {
+    "oracle-philosophy": "https://github.com/oracle-philosophy",
+    "ralph": "https://github.com/frankbria/ralph-claude-code",
+    "multi-agent-workflow-kit": "https://github.com/multi-agent-workflow-kit"
+  }
+}
