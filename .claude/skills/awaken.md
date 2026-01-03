@@ -49,7 +49,7 @@ Initialize the AI Productivity Kit in the current project by installing all comm
 ### 3. Creates Initial Files
 - `ψ/inbox/focus.md` - Current focus tracker
 - `.claude/knowledge/project-notes.md` - Project-specific notes
-- Updates `.gitignore` with psi rules
+- Updates `.gitignore` with ψ rules
 
 ## Usage
 

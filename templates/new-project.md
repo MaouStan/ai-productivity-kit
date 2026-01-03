@@ -25,7 +25,7 @@ git init
 ## Initial Focus File
 
 ```markdown
-# psi/inbox/focus.md
+# ψ/inbox/focus.md
 
 # Project: [Project Name]
 
@@ -133,12 +133,12 @@ EXAMPLE_VAR=value
 # .gitignore additions
 
 # AI Productivity Kit
-psi/active/
-psi/inbox/WIP.md
+ψ/active/
+ψ/inbox/WIP.md
 
 # Keep these tracked
-!psi/inbox/focus.md
-!psi/memory/
+!ψ/inbox/focus.md
+!ψ/memory/
 
 # Project specific
 [Your project ignores]

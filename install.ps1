@@ -46,14 +46,14 @@ function Install-ToProject {
         ".claude\agents",
         ".claude\skills",
         ".claude\knowledge",
-        "psi\active",
-        "psi\inbox",
-        "psi\memory\tricks",
-        "psi\memory\patterns",
-        "psi\memory\retros",
-        "psi\memory\logs",
-        "psi\writing",
-        "psi\lab"
+        "ψ\active",
+        "ψ\inbox",
+        "ψ\memory\tricks",
+        "ψ\memory\patterns",
+        "ψ\memory\retros",
+        "ψ\memory\logs",
+        "ψ\writing",
+        "ψ\lab"
     )
 
     foreach ($dir in $dirs) {
@@ -86,7 +86,7 @@ Ready to start working!
 
 Use `/ai-kit:start` to begin a session.
 "@
-    Set-Content -Path (Join-Path $TargetPath "psi\inbox\focus.md") -Value $focusContent
+    Set-Content -Path (Join-Path $TargetPath "ψ\inbox\focus.md") -Value $focusContent
 
     # Create project notes
     $projectNotes = @"
@@ -112,13 +112,13 @@ Use `/ai-kit:start` to begin a session.
     $gitignorePath = Join-Path $TargetPath ".gitignore"
     $gitignoreContent = @"
 
-# AI Productivity Kit - Psi (working directory)
-psi/active/
-psi/inbox/WIP.md
+# AI Productivity Kit - ψ (working directory)
+ψ/active/
+ψ/inbox/WIP.md
 
 # Keep these tracked
-!psi/inbox/focus.md
-!psi/memory/
+!ψ/inbox/focus.md
+!ψ/memory/
 "@
 
     if (Test-Path $gitignorePath) {

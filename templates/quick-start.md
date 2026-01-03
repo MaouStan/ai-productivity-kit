@@ -19,7 +19,7 @@ irm https://raw.githubusercontent.com/YOUR_USERNAME/ai-productivity-kit/main/ins
 ```bash
 # 1. Create structure
 mkdir -p .claude/commands .claude/agents .claude/skills .claude/knowledge
-mkdir -p psi/{active,inbox,memory/{tricks,patterns,retros,logs},writing,lab}
+mkdir -p ψ/{active,inbox,memory/{tricks,patterns,retros,logs},writing,lab}
 
 # 2. Copy from installed kit
 cp -r ~/.ai-productivity-kit/.claude/* .claude/

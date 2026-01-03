@@ -25,7 +25,7 @@ Create the directory structure and initial files for the AI Productivity Kit.
 ├── skills/       # Skill definitions (copied from plugin)
 └── knowledge/    # Documentation base (copied from plugin)
 
-psi/              # Memory structure (7 pillars)
+ψ/              # Memory structure (7 pillars)
 ├── active/       # Current research/work
 ├── inbox/        # focus.md, messages, WIP.md
 ├── memory/       # tricks, patterns, retros, logs
@@ -35,9 +35,9 @@ psi/              # Memory structure (7 pillars)
 ```
 
 ### Initial Files
-- `psi/inbox/focus.md` - Current focus tracker
-- `psi/memory/.gitkeep` - Keep directory structure
-- Updates `.gitignore` with psi rules
+- `ψ/inbox/focus.md` - Current focus tracker
+- `ψ/memory/.gitkeep` - Keep directory structure
+- Updates `.gitignore` with ψ rules
 
 ## Usage
 
@@ -47,7 +47,7 @@ User: /ai-kit:init
 ```
 
 ### What happens
-1. Creates `psi/` directory structure (7 pillars)
+1. Creates `ψ/` directory structure (7 pillars)
 2. Creates initial `focus.md` with template
 3. Updates `.gitignore` if needed
 4. Reports what was created
@@ -60,27 +60,27 @@ AI:
 # Initializing AI Productivity Kit...
 
 Creating directory structure:
-  psi/
-  psi/active/
-  psi/inbox/
-  psi/memory/
-  psi/writing/
-  psi/lab/
-  psi/learn/
+  ψ/
+  ψ/active/
+  ψ/inbox/
+  ψ/memory/
+  ψ/writing/
+  ψ/lab/
+  ψ/learn/
 
 Creating initial files:
-  psi/inbox/focus.md
-  psi/memory/.gitkeep
-  psi/writing/.gitkeep
-  psi/lab/.gitkeep
-  psi/learn/.gitkeep
+  ψ/inbox/focus.md
+  ψ/memory/.gitkeep
+  ψ/writing/.gitkeep
+  ψ/lab/.gitkeep
+  ψ/learn/.gitkeep
 
 Checking .gitignore...
 
 AI Productivity Kit initialized!
 
 Next steps:
-  1. Review: cat psi/inbox/focus.md
+  1. Review: cat ψ/inbox/focus.md
   2. Start session: /ai-kit:start
   3. Create plan: /nnn "your task"
 ```
@@ -104,15 +104,15 @@ Next steps:
 ## gitignore Rules
 If not already present, adds:
 ```gitignore
-# AI Productivity Kit - Psi Structure
-psi/active/
-psi/inbox/
-psi/memory/
-psi/writing/
-psi/lab/
-psi/learn/
+# AI Productivity Kit - ψ Structure
+ψ/active/
+ψ/inbox/
+ψ/memory/
+ψ/writing/
+ψ/lab/
+ψ/learn/
 # But keep the directories
-!psi*/
+!ψ*/
 !.gitkeep
 ```
 
@@ -124,7 +124,7 @@ psi/learn/
 ## When to Use
 - First time using AI Productivity Kit
 - After cloning to a new project
-- When psi/ structure is missing
+- When ψ/ structure is missing
 
 ## Version
 - **Version**: 1.0.0

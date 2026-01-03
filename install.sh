@@ -47,14 +47,14 @@ install_to_project() {
     mkdir -p "$target_dir/.claude/agents"
     mkdir -p "$target_dir/.claude/skills"
     mkdir -p "$target_dir/.claude/knowledge"
-    mkdir -p "$target_dir/psi/active"
-    mkdir -p "$target_dir/psi/inbox"
-    mkdir -p "$target_dir/psi/memory/tricks"
-    mkdir -p "$target_dir/psi/memory/patterns"
-    mkdir -p "$target_dir/psi/memory/retros"
-    mkdir -p "$target_dir/psi/memory/logs"
-    mkdir -p "$target_dir/psi/writing"
-    mkdir -p "$target_dir/psi/lab"
+    mkdir -p "$target_dir/ψ/active"
+    mkdir -p "$target_dir/ψ/inbox"
+    mkdir -p "$target_dir/ψ/memory/tricks"
+    mkdir -p "$target_dir/ψ/memory/patterns"
+    mkdir -p "$target_dir/ψ/memory/retros"
+    mkdir -p "$target_dir/ψ/memory/logs"
+    mkdir -p "$target_dir/ψ/writing"
+    mkdir -p "$target_dir/ψ/lab"
 
     print_success "Created directory structure"
 
@@ -63,7 +63,7 @@ install_to_project() {
     print_success "Copied commands, agents, skills, knowledge"
 
     # Create initial files
-    cat > "$target_dir/psi/inbox/focus.md" << 'EOF'
+    cat > "$target_dir/ψ/inbox/focus.md" << 'EOF'
 # Current Focus
 
 **State**: ready
@@ -97,13 +97,13 @@ EOF
     # Create .gitignore entries
     cat >> "$target_dir/.gitignore" << 'EOF'
 
-# AI Productivity Kit - Psi (working directory)
-psi/active/
-psi/inbox/WIP.md
+# AI Productivity Kit - ψ (working directory)
+ψ/active/
+ψ/inbox/WIP.md
 
 # Keep these tracked
-!psi/inbox/focus.md
-!psi/memory/
+!ψ/inbox/focus.md
+!ψ/memory/
 EOF
 
     print_success "Updated .gitignore"
