@@ -1,13 +1,13 @@
 # Work In Progress
 
 **Saved**: 2026-01-03
-**Session**: AI Productivity Kit - Plugin Commands Metadata Update ✅ COMPLETE
+**Session**: AI Productivity Kit - Fix init/start/awaken for team-configurator integration
 
 ---
 
 ## Current Task
 
-Update all ai-productivity-kit commands with metadata header and add full workflow example to README.md
+Fix `/ai-kit:start`, `/ai-kit:init`, and create new `/ai-kit:awaken` command to properly integrate with team-configurator for automatic CLAUDE.md generation.
 
 ---
 
@@ -15,117 +15,91 @@ Update all ai-productivity-kit commands with metadata header and add full workfl
 
 ### ✅ COMPLETED - ALL TASKS DONE!
 
-1. **Plugin README Update**
-   - Added `/awaken` quick setup documentation
-   - Added project structure diagram
-   - Updated installation instructions
-   - **NEW: Full workflow example added**
+1. **ai-kit-init.md Updated** (both .claude/ and .claude-plugin/)
+   - Added explicit CRITICAL section with exact Task tool call
+   - "You MUST actually execute this exact Task call"
+   - Added code block showing exact Task() parameters
+   - No ambiguity - AI will actually call the tool
 
-2. **start.md Update**
-   - Added "First Time?" section with `/awaken` reference
-   - Added related commands section
-   - **NEW: Metadata header added**
+2. **start.md Updated** (both .claude/ and .claude-plugin/)
+   - Changed from "prompt user" to "AUTO-RUN without asking"
+   - Added CRITICAL section with exact Task tool call
+   - Updated example to show auto-run behavior
+   - Added reference to /ai-kit:awaken in First Time section
 
-3. **init.md Update**
-   - Added awaken reference
-   - Added complete ψ/ structure diagram
+3. **NEW: /ai-kit:awaken command created**
+   - Full setup command (not just skill)
+   - Creates .claude/, ψ/ structures
+   - Copies all commands, agents, skills
+   - Auto-runs team-configurator
+   - Located at: `.claude/commands/awaken.md`
 
-4. **CLAUDE.md Template Created**
-   - Team configuration with agents
-   - Project context and guidelines
-
-5. **Learning System Implemented**
-   - Created `/ai-kit:learn` command
-   - Created learning workflow documentation
-   - Created knowledge templates
-   - Tested with python.org
-
-6. **Session Handoff Workflow**
-   - Updated `/ai-kit:forward` command with metadata
-   - Updated `/ai-kit:recap` command with metadata
-   - Created WIP.md.template
-
-7. **Core Commands Metadata Added**
-   - `nnn.md` - Implementation plan creation ✅
-   - `gogogo.md` - Execute plan with context check ✅
-   - `rrr.md` - Session retrospective ✅
-   - `ccc.md` - Context issue + compact ✅
-
-8. **Commands Renamed**
-   - `learn.md` → `ai-kit-learn.md` ✅
-   - `forward.md` → `ai-kit-forward.md` ✅
-   - `recap.md` → `ai-kit-recap.md` ✅
-
-9. **Remaining 11 Commands Metadata Added** ✅
-   - `focus.md` ✅
-   - `pause.md` ✅
-   - `note.md` ✅
-   - `trick.md` ✅
-   - `pattern.md` ✅
-   - `delegate.md` ✅
-   - `breakdown.md` ✅
-   - `lll.md` ✅
-   - `hours.md` ✅
-   - `trace.md` ✅
-   - `start.md` ✅
-
-10. **README.md Enhanced** ✅
-    - Added full workflow example (JWT auth scenario)
-    - Added "Key Workflow Patterns" section
-
-11. **Plugin Files Synced** ✅
-    - All changes synced to `.claude-plugin/`
+### Changes Summary
+- `/ai-kit:init` - Now explicitly tells AI to call Task tool for CLAUDE.md
+- `/ai-kit:start` - Now auto-runs team-configurator without asking
+- `/ai-kit:awaken` - NEW command for complete setup
 
 ---
 
 ## Next Steps
 
-1. **Commit changes**: `git add .claude-plugin/ .claude/ && git commit -m "feat: add metadata to all commands + workflow example"`
-2. **Push**: `git push` when ready
-3. **Consider**: Version bump in package.json for release
+1. **Commit changes**:
+   ```bash
+   git add .claude/ .claude-plugin/
+   git commit -m "feat: fix init/start to actually run team-configurator, add awaken command"
+   ```
+
+2. **Optional: Version bump** for release
+
+3. **Push** when ready
 
 ---
 
 ## Important Context
 
-### Metadata Template Used
-```yaml
----
-description: "Thai description | English description"
-allowed-tools:
-  - Tool1
-  - Tool2
----
+### What is team-configurator?
+- A subagent that analyzes codebase and generates CLAUDE.md
+- Detects tech stack, architecture, and project patterns
+- Creates project-specific AI team configuration
+
+### The Fix
+Previous versions said "run team-configurator" but didn't explicitly show HOW.
+Now each command has:
+```
+## CRITICAL: Task Tool Call
+
+**You MUST actually execute this exact Task call**:
+
+Task(
+  subagent_type="team-configurator",
+  prompt="Set up AI team configuration...",
+  model="sonnet"
+)
 ```
 
-### Tool Mapping by Command Type
-- **File operations** (focus, pause, note, trick, pattern, hours): `Write`
-- **Delegation** (delegate): `Task`, `Bash`, `Read`
-- **Searching** (trace): `Bash`, `Grep`, `Glob`
-- **Task breakdown** (breakdown): `TodoWrite`, `AskUserQuestion`
-- **Project status** (lll): `Bash`, `AskUserQuestion`
-- **Session start** (start): `Read`, `Write`, `TodoWrite`
-
----
-
-## Files Modified
-
+### Files Modified
 ```
-.claude/commands/ - ALL commands now have metadata
-.claude-plugin/plugins/ai-productivity-kit/ - Synced
-README.md - Full workflow example added
-ψ/memory/retros/2026-01-03_retro.md - Session retrospective
+.claude/commands/ai-kit-init.md    (updated)
+.claude/commands/start.md          (updated)
+.claude/commands/awaken.md         (NEW)
+.claude-plugin/plugins/ai-productivity-kit/commands/ai-kit-init.md  (updated)
+.claude-plugin/plugins/ai-productivity-kit/commands/start.md        (updated)
+.claude-plugin/plugins/ai-productivity-kit/commands/awaken.md       (NEW)
 ```
 
 ---
 
-## Ready to Release
+## Git Status
 
-All planned tasks for this session are complete! Plugin is ready for:
-1. Git commit
-2. Version bump (if needed)
-3. Marketplace release
+```
+M .claude-plugin/plugins/ai-productivity-kit/commands/ai-kit-init.md
+M .claude-plugin/plugins/ai-productivity-kit/commands/start.md
+M .claude/commands/ai-kit-init.md
+M .claude/commands/start.md
+?? .claude/commands/awaken.md
+?? .claude-plugin/plugins/ai-productivity-kit/commands/awaken.md
+```
 
 ---
 
-**Restore with**: `/recap`
+**Restore with**: `/recap` or `/ai-kit:recap`

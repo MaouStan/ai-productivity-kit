@@ -4,6 +4,7 @@ allowed-tools:
   - Read
   - Write
   - TodoWrite
+  - Task
 ---
 
 # /ai-kit:start
@@ -17,13 +18,14 @@ If this is your first time using the kit, run setup first:
 
 ```bash
 # Option 1: Full setup (recommended)
-/nat-agents-core:awaken   # Sets up agents/, CLAUDE.md, ψ/ structure
+/ai-kit:awaken            # Sets up all commands, agents, skills, CLAUDE.md, ψ/ structure
 
 # Option 2: Quick setup
-/ai-kit:init              # Initialize ψ/ structure only
+/ai-kit:init              # Initialize ψ/ structure + CLAUDE.md
 ```
 
 ## ทำอะไร
+- ตรวจสอบ CLAUDE.md ถ้าไม่มีจะ **auto-run** team-configurator
 - แสดงสถานะปัจจุบัน (จาก `ψ/inbox/focus.md`)
 - ถามหัวใจงานวันนี้
 - สร้าง todo list ถ้ายังไม่มี
@@ -42,29 +44,87 @@ If this is your first time using the kit, run setup first:
 {{ask user for tasks}}
 ```
 
-## Example
+## AI Instructions
+
+เมื่อ user พิมพ์ `/ai-kit:start`:
+
+1. **Check for CLAUDE.md**:
+   - ใช้ `Read` tool อ่าน `CLAUDE.md` ที่ root ของ project
+   - ถ้าไม่มี (file not found):
+     - **AUTO-RUN team-configurator** without asking
+     - Execute: `Task` tool with `subagent_type=team-configurator` and `prompt="Set up AI team configuration for this project"`
+     - Wait for completion and verify CLAUDE.md was created
+     - Then proceed with session
+
+2. **Read current state**:
+   - อ่าน `ψ/inbox/focus.md` ถ้ามี
+   - อ่าน `ψ/inbox/WIP.md` ถ้ามี
+
+3. **Show session summary**:
+   - แสดง current focus จากไฟล์
+   - แสดง pending tasks
+
+4. **Ask for today's plan**:
+   - ถาม user ว่าวันนี้จะทำอะไร
+   - สร้าง todo list ด้วย `TodoWrite`
+
+## CRITICAL: Auto-Run team-configurator
+
+**When CLAUDE.md is missing, you MUST immediately execute**:
+
 ```
-User: /ai-kit:start ทำ authentication system
+Task(
+  subagent_type="team-configurator",
+  prompt="Set up AI team configuration for this project. Detect tech stack, create CLAUDE.md with project-specific instructions.",
+  model="sonnet"
+)
+```
+
+**DO NOT ASK** - just run it automatically!
+
+## Example
+
+### Scenario 1: Normal session
+```
+User: /ai-kit:start
 
 AI:
 # Session Start
 Time: 2026-01-03 10:30
 
-## Focus: Authentication System
+## Current Status
+From WIP.md: Working on JWT authentication system
 
-### Current State
-- No active focus file
+## Focus
+- [x] Design auth flow
+- [ ] Implement JWT middleware
+- [ ] Add login/logout endpoints
 
-### Today's Tasks
-1. Design auth flow
-2. Implement JWT middleware
-3. Add login/logout endpoints
-4. Write tests
+What's the plan for today?
+```
 
-Let me know if you want to adjust this plan!
+### Scenario 2: No CLAUDE.md
+```
+User: /ai-kit:start
+
+AI:
+# Session Start
+Checking project configuration...
+
+⚠️ No CLAUDE.md found in project root.
+
+Auto-running team-configurator to create CLAUDE.md...
+
+[Analyzes codebase, detects tech stack, creates CLAUDE.md]
+
+✅ CLAUDE.md created with project-specific configuration!
+
+Now continuing with session start...
 ```
 
 ## Related Commands
+- `/ai-kit:init` - Initialize ψ/ structure + CLAUDE.md (auto-runs team-configurator)
+- `/ai-kit:awaken` - Full setup with all components
 - `/ai-kit:focus` - Set focus for current task
 - `/ai-kit:pause` - Pause work temporarily
 - `/recap` - View current status
