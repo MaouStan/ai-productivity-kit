@@ -9,15 +9,102 @@
   },
   "homepage": "https://github.com/MaouStan/ai-productivity-kit",
   "repository": "https://github.com/MaouStan/ai-productivity-kit",
+  "commands": [
+    {
+      "name": "breakdown",
+      "prompt": "/ai-kit:breakdown",
+      "description": "Break complex task into smaller pieces with todo list and effort estimation"
+    },
+    {
+      "name": "ccc",
+      "prompt": "/ai-kit:ccc",
+      "description": "Create context issue and compact conversation to save tokens"
+    },
+    {
+      "name": "delegate",
+      "prompt": "/ai-kit:delegate",
+      "description": "Delegate task to specialized agent (coder, reviewer, test-writer, etc.)"
+    },
+    {
+      "name": "focus",
+      "prompt": "/ai-kit:focus",
+      "description": "Set current task focus in focus.md"
+    },
+    {
+      "name": "forward",
+      "prompt": "/ai-kit:forward",
+      "description": "Forward context to next session via WIP.md before /clear"
+    },
+    {
+      "name": "gogogo",
+      "prompt": "/ai-kit:gogogo",
+      "description": "Execute most recent plan - checks context first, suggests summary/forward/rrr if stale"
+    },
+    {
+      "name": "hours",
+      "prompt": "/ai-kit:hours",
+      "description": "Track work hours - start/end/week summary"
+    },
+    {
+      "name": "lll",
+      "prompt": "/ai-kit:lll",
+      "description": "List project status - issues, PRs, commits, branches"
+    },
+    {
+      "name": "nnn",
+      "prompt": "/ai-kit:nnn",
+      "description": "Create implementation plan with task breakdown and acceptance criteria"
+    },
+    {
+      "name": "note",
+      "prompt": "/ai-kit:note",
+      "description": "Quick note capture to memory/logs"
+    },
+    {
+      "name": "pattern",
+      "prompt": "/ai-kit:pattern",
+      "description": "Record reusable patterns to memory/patterns"
+    },
+    {
+      "name": "pause",
+      "prompt": "/ai-kit:pause",
+      "description": "Pause current work session with progress saved"
+    },
+    {
+      "name": "recap",
+      "prompt": "/ai-kit:recap",
+      "description": "Fresh start - show current context summary from WIP.md"
+    },
+    {
+      "name": "rrr",
+      "prompt": "/ai-kit:rrr",
+      "description": "Session retrospective - what we did, learned, and next steps"
+    },
+    {
+      "name": "start",
+      "prompt": "/ai-kit:start",
+      "description": "Start productive work session with today's plan"
+    },
+    {
+      "name": "trace",
+      "prompt": "/ai-kit:trace",
+      "description": "Search everything - git, files, issues, memory"
+    },
+    {
+      "name": "trick",
+      "prompt": "/ai-kit:trick",
+      "description": "Save useful code tricks to memory/tricks"
+    }
+  ],
   "plugins": [
     {
       "name": "ai-productivity-kit",
-      "description": "Complete productivity toolkit with 17 commands, 8 skills, agents, and knowledge base for AI-assisted programming workflow automation",
+      "description": "Complete productivity toolkit with 17 commands, 8 skills, agents, and knowledge base for AI-assisted programming workflow automation. Thai/English bilingual support.",
       "version": "1.0.0",
       "author": {
         "name": "MaouStan"
       },
-      "source": "./plugins/ai-productivity-kit",
+      "source": "./.claude-plugin/plugins/ai-productivity-kit",
       "category": "productivity",
       "tags": ["workflow", "automation", "productivity", "thai", "bilingual"]
     }

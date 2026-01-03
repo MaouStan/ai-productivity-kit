@@ -1,7 +1,7 @@
-# /forward
+# /ai-kit:forward
 
 **Forward Context to Next Session**
-*ส่ง context ไป session ถัดไป*
+*ส่ง context ไป session ถัดไป ก่อนใช้ /clear*
 
 ## ทำอะไร
 1. อ่าน context ปัจจุบันทั้งหมด

@@ -1,7 +1,7 @@
-# /ccc
+# /ai-kit:ccc
 
-**Create Context issue + Compact conversation**
-*สร้าง context และย่อ conversation*
+**Create Context Issue + Compact Conversation**
+*สร้าง context issue และย่อ conversation เพื่อ save tokens*
 
 ## ทำอะไร
 1. สร้าง GitHub issue เพื่อเก็บ session context

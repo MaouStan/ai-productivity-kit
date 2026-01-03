@@ -1,7 +1,7 @@
-# /nnn
+# /ai-kit:nnn
 
 **New Plan - Create Implementation Plan**
-*สร้างแผนงาน implementation*
+*สร้างแผนงาน implementation พร้อม task breakdown*
 
 ## ทำอะไร
 1. Auto-runs `/ccc` ถ้าไม่มี context issue ล่าสุด

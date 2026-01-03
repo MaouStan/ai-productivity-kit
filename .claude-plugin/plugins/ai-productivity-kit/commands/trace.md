@@ -1,7 +1,7 @@
-# /trace
+# /ai-kit:trace
 
-**Search Everything**
-*ค้นหาทุกที่ใน project*
+**Search Everything in Project**
+*ค้นหาทุกที่ใน project - git, files, issues, memory*
 
 ## ทำอะไร
 ค้นหา query ใน:

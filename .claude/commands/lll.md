@@ -1,7 +1,7 @@
-# /lll
+# /ai-kit:lll
 
 **List Project Status**
-*แสดงสถานะ project ทั้งหมด*
+*แสดงสถานะ project ทั้งหมด - issues, PRs, commits, branches*
 
 ## ทำอะไร
 แสดงภาพรวมของ project:

@@ -1,7 +1,7 @@
-# /recap
+# /ai-kit:recap
 
 **Fresh Start - Current Context Summary**
-*เริ่ม session ใหม่ ดูสถานะปัจจุบัน*
+*เริ่ม session ใหม่ ดูสถานะปัจจุบันจาก WIP.md*
 
 ## ทำอะไร
 1. อ่าน `ψ/inbox/focus.md`

@@ -1,7 +1,7 @@
-# /hours
+# /ai-kit:hours
 
 **Track Work Hours**
-*สรุปชั่วโมงทำงานวันนี้*
+*สรุปชั่วโมงทำงานวันนี้ - start/end/week*
 
 ## ทำอะไร
 1. อ่าน work log จาก `ψ/memory/logs/work-YYYY-MM-DD.md`

@@ -1,17 +1,82 @@
-# /gogogo
+# /ai-kit:gogogo
 
 **Execute Most Recent Plan**
-*ลงมือทำตามแผนล่าสุด*
+*ลงมือทำตามแผนล่าสุด - check context ก่อน execute*
+
+## Description
+Execute tasks from the most recent plan issue. Automatically checks if current context is sufficient, and handles context preservation if needed.
 
 ## ทำอะไร
-1. หา plan issue ล่าสุด
-2. อ่าน tasks ทั้งหมด
-3. Execute ทีละ task ตามลำดับ
-4. อัปเดต progress ใน issue
-5. ทำจนครบทุก task หรือ user หยุด
+1. **Check context** - run `/ai-kit:now` to verify current understanding
+2. If context insufficient → suggest `/ai-kit:summary`, `/ai-kit:forward`, or `/ai-kit:rrr` then `/clear` + `/ai-kit:recap`
+3. If context OK → find plan issue ล่าสุด
+4. Execute ทีละ task ตามลำดับ
+5. อัปเดต progress ใน issue
+6. ทำจนครบทุก task หรือ user หยุด
+
+## Context Check Flow
+
+ก่อนเริ่ม execute ทุกครั้ง:
+
+1. **Run `/ai-kit:now`** (internal check):
+   - อ่าน `ψ/inbox/WIP.md` ถ้ามี
+   - อ่าน `ψ/inbox/focus.md` ถ้ามี
+   - เช็ค recent commits
+   - เช็ค recent issues
+
+2. **Evaluate context sufficiency**:
+   ```
+   Context sufficient if:
+   - WIP.md exists OR focus.md exists
+   - Last commit < 4 hours ago
+   - Plan issue exists with `plan` label
+   ```
+
+3. **Handle insufficient context**:
+   ```
+   Context appears stale. Recommend:
+   1. /ai-kit:summary - Quick session summary
+   2. /ai-kit:forward - Save to WIP.md
+   3. /ai-kit:rrr - Full retrospective
+   4. /clear - Start fresh
+   5. /ai-kit:recap - Reload from WIP.md
+
+   Which to use? [1-5 or 'skip' to continue anyway]
+   ```
 
 ## AI Instructions
-เมื่อ user พิมพ์ `/gogogo`:
+เมื่อ user พิมพ์ `/ai-kit:gogogo`:
+
+### Phase 1: Context Check (ALWAYS)
+
+```bash
+# Check context files
+cat ψ/inbox/WIP.md 2>/dev/null || echo "No WIP.md"
+cat ψ/inbox/focus.md 2>/dev/null || echo "No focus.md"
+
+# Check git activity
+git log -1 --format="%h %ar %s"
+git log --since="4 hours ago" --oneline | wc -l
+
+# Check plan issues
+gh issue list --label plan --limit 1
+```
+
+### Phase 2: Decision Tree
+
+```
+IF WIP.md exists AND recent_commits > 0:
+    → Context looks good, proceed
+ELSE IF last_commit > 4 hours ago:
+    → Ask user: "Context seems stale. Want to recap first?"
+    → Options: /ai-kit:recap, /ai-kit:summary, /ai-kit:forward, continue
+ELSE IF no plan issue found:
+    → Error: "No plan issue found. Create one with /ai-kit:nnn"
+ELSE:
+    → Proceed with execution
+```
+
+### Phase 3: Execute Plan (if context OK)
 
 1. **Find plan issue**:
    ```bash
@@ -57,33 +122,28 @@
 
 ## Example
 ```
-User: /gogogo
+User: /ai-kit:gogogo
 
 AI:
+# Context Check
+
+Checking current state...
+✓ Found WIP.md (updated 2 hours ago)
+✓ Recent commits: 3 changes
+✓ Plan issue #13 exists
+
+Context looks good! Proceeding...
+
+---
 # Executing Plan: Refresh Token System
 
 Found plan issue #13
 
 ## 📋 Tasks Overview
-- [ ] Task 1: Create refresh token model
+- [x] Task 1: Create refresh token model
 - [ ] Task 2: Implement token refresh endpoint
 - [ ] Task 3: Add token blacklist for logout
 - [ ] Task 4: Write tests
-
----
-## Task 1: Create refresh token model
-
-Reading user model...
-Found: src/models/user.py
-
-Adding refresh_token column...
-```sql
-ALTER TABLE users ADD COLUMN refresh_token TEXT;
-```
-
-✅ Task 1 complete!
-
-Updating issue #13...
 
 ---
 ## Task 2: Implement token refresh endpoint
@@ -102,6 +162,11 @@ async def refresh_token(request: RefreshRequest):
 
 ✅ Task 2 complete!
 
+Updating issue #13...
+
+---
+## Task 3: Add token blacklist for logout
+
 [Continue...]
 
 ---
@@ -109,7 +174,30 @@ async def refresh_token(request: RefreshRequest):
 
 Plan issue #13 updated.
 
-Next: /rrr to capture learnings?
+Next: /ai-kit:rrr to capture learnings?
+```
+
+## Example: Context Insufficient
+```
+User: /ai-kit:gogogo
+
+AI:
+# Context Check
+
+Checking current state...
+✗ No WIP.md found
+✗ Last commit was 2 days ago
+⚠️ Context appears stale!
+
+## Recommended Actions:
+
+1. **/ai-kit:summary** - Quick summary of current state
+2. **/ai-kit:forward** - Save context to WIP.md before clearing
+3. **/ai-kit:rrr** - Full retrospective with learnings
+4. **/clear** - Start fresh session
+5. **/ai-kit:recap** - Reload from existing WIP.md
+
+Which action? [1-5] or 'continue' to proceed anyway
 ```
 
 ## Controls During Execution
@@ -118,7 +206,7 @@ Next: /rrr to capture learnings?
 User: stop
 AI: Pausing after current task...
      Progress saved to issue.
-     Resume with /gogogo
+     Resume with /ai-kit:gogogo
 
 User: skip
 AI: Skipping current task...
@@ -135,16 +223,17 @@ AI: Switching to Task [number]...
 ```
 
 ## When to Use
-- มี plan จาก `/nnn` แล้ว
+- มี plan จาก `/ai-kit:nnn` แล้ว
 - ต้องการลงมือทำ
 - ต้องการ AI ทำต่อเนื่อง
 - Task ชัดเจน ไม่ต้อง research
 
 ## Tips
-- `/gogogo` ทำงานทีละ task อย่างมีสมาธิ
+- `/ai-kit:gogogo` always checks context first
 - จะ stop/ตอบรับคำสั่งระหว่างทำ
 - ถ้างง → ถามก่อนทำ
-- เมื่อ complete → ใช้ `/rrr` สรุป
+- เมื่อ complete → ใช้ `/ai-kit:rrr` สรุป
+- Context check ป้องกันทำงานผิดจาก session เก่า
 
 ## Safety Checks
 
