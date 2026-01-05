@@ -4,33 +4,56 @@ allowed-tools:
   - Bash
   - Read
   - Write
+  - AskUserQuestion
 ---
 
-# /ai-kit:rrr
+# /rrr
 
 **Retro-Reflect-Review - ทบทวนงานที่ทำไป**
-*Session retrospective*
+*Session retrospective after completing workflow*
+
+## Description
+
+Captures retrospective after completing the workflow. Documents what was done, what was learned, and next steps. Saves to `ψ/memory/retros/`.
+
+## Workflow Position
+```
+/nnn → /breakdown → /delegate → /gogogo → /forward → /rrr
+```
 
 ## ทำอะไร
-- สรุปสิ่งที่ทำใน session
-- บันทึกสิ่งที่เรียนรู้
-- ระบุสิ่งที่ทำได้ดี/ควรปรับปรุง
-- สกัด patterns และ tricks
 
-## Template
+1. **Review execution** - Read from `/forward` output
+2. **Extract learnings** - Identify patterns, tricks, improvements
+3. **Create retrospective** - Save to `ψ/memory/retros/`
+4. **Update knowledge base** - Save patterns/tricks if found
+5. **Ask for next steps** - Plan future work
+
+## Template (Retrospective)
 ```markdown
-# Retrospective: {{title}}
+# Retrospective: {{Plan Name}}
 
 **Date**: {{YYYY-MM-DD}}
 **Time**: {{start}} - {{end}}
 **Duration**: {{hours}}
+**Issue**: #{{number}}
+**Workflow**: /nnn → /breakdown → /delegate → /gogogo → /forward → /rrr
 
 ## What We Did
-{{สรุปงานที่ทำ}}
+✅ {{summary of completed tasks}}
+
+- [x] Task 1: {{description}}
+- [x] Task 2: {{description}}
+- [x] Task 3: {{description}}
 
 ## What We Learned
+
+### Technical Learnings
 - {{learning 1}}
 - {{learning 2}}
+
+### Workflow Learnings
+- {{workflow insight}}
 
 ## What Went Well
 ✅ {{สิ่งที่ดี}}
@@ -38,79 +61,255 @@ allowed-tools:
 ## What Could Be Better
 ⚠️ {{สิ่งที่ควรปรับปรุง}}
 
+## Patterns Discovered
+{{if any patterns found → link to ψ/memory/patterns/}}
+
+## Tricks Saved
+{{if any tricks found → link to ψ/memory/tricks/}}
+
 ## Next Steps
 - [ ] {{next 1}}
 - [ ] {{next 2}}
+- [ ] {{next 3}}
 
-## Patterns Discovered
-{{patterns ที่เจอ}}
+## Metrics
+- **Tasks completed**: N/N
+- **Time taken**: Xh Ym
+- **Parallel efficiency**: Z%
+- **Test coverage**: N%
+- **Files changed**: M
 
 ## Tags
-`{{tag1}}` `{{tag2}}`
+`{{tag1}}` `{{tag2}}` `{{tag3}}`
 ```
 
 ## AI Instructions
-เมื่อ user พิมพ์ `/ai-kit:rrr`:
 
-1. **อ่าน context** จาก:
-   - `ψ/inbox/focus.md` - งานที่ทำอยู่
-   - git log -10 --oneline - commits ล่าสุด
-   - Todo list ปัจจุบัน
+เมื่อ user พิมพ์ `/rrr`:
 
-2. **ถาม user** (ถ้า context ไม่ชัดเจน):
-   - ทำอะไรมาบ้างใน session นี้?
-   - มีอะไรเรียนรู้ใหม่?
-   - มี trick หรือ pattern ดีๆ ไหม?
+### Step 1: Read Context
 
-3. **สร้าง retrospective** และบันทึกลง:
-   - `ψ/memory/retros/{{YYYY-MM-DD}}_retro.md`
+```bash
+# Read WIP.md for execution summary
+cat ψ/inbox/WIP.md 2>/dev/null || echo "No WIP.md"
 
-4. **สกัด learnings** แยกไฟล์ถ้ามีประโยชน์:
-   - → `ψ/memory/learnings/{{YYYY-MM-DD}}_learning.md`
+# Read git log for commits
+git log --since="today" --oneline
+
+# Read todo list for completed tasks
+```
+
+### Step 2: Extract Learnings
+
+Ask user for insights:
+```
+📝 Reflection Questions:
+
+1. What went well in this session?
+2. What could be improved?
+3. Any new patterns or tricks discovered?
+4. What should we do differently next time?
+
+Or press Enter to auto-generate from context...
+```
+
+### Step 3: Create Retrospective
+
+```bash
+# Save to retros directory
+cat > ψ/memory/retros/$(date +%Y%m%d)_retro.md << 'EOF'
+<retrospective content>
+EOF
+```
+
+### Step 4: Extract Patterns/Tricks
+
+If patterns or tricks discovered:
+```bash
+# Save pattern
+cat > ψ/memory/patterns/$(date +%Y%m%d)_pattern.md << 'EOF'
+# Pattern: {{name}}
+
+## Context
+{{when to use}}
+
+## Solution
+{{the pattern}}
 
 ## Example
+{{code example}}
+EOF
+
+# Save trick
+cat > ψ/memory/tricks/$(date +%Y%m%d)_trick.md << 'EOF'
+# Trick: {{name}}
+
+{{description}}
+
+{{example}}
+EOF
 ```
-User: /ai-kit:rrr
+
+### Step 5: Update Session Log
+
+```bash
+echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ]] Retro: {{plan_name}}" >> ψ/memory/logs/sessions.log
+```
+
+## Example
+
+```
+User: /rrr
 
 AI:
-# Retrospective: Auth System Implementation
+# Retrospective: Refresh Token System
 
-**Date**: 2026-01-03
-**Time**: 10:00 - 15:30
-**Duration**: 5.5 hours
+Reading execution context...
+✓ Found WIP.md
+✓ Found 6 completed tasks
+✓ Found commit abc123f
+✓ Found closed issue #42
+
+---
 
 ## What We Did
-- ✅ Designed JWT authentication flow
-- ✅ Implemented login/logout endpoints
-- ✅ Added middleware for protected routes
-- ✅ Wrote unit tests (80% coverage)
+
+✅ **Completed Refresh Token System** (2h 57m)
+
+- [x] T1: Update User model with refresh_token column (28m)
+- [x] T2: Implement refresh token generation (42m)
+- [x] T3: Create POST /auth/refresh endpoint (48m)
+- [x] T4: Implement token blacklist for logout (32m)
+- [x] T5: Update API documentation (18m)
+- [x] T6: Write integration tests (47m)
+
+## Test Results
+```
+=== 47 passed, 2 warnings in 12.3s ===
+```
 
 ## What We Learned
-- Python `python-jose` library is easier than PyJWT for JWT
-- Docker volume paths must be absolute (saved to tricks!)
-- Multi-agent setup helps: one agent writes code, one writes tests
+
+### Technical Learnings
+- **python-jose** is easier than PyJWT for JWT handling
+- **httpOnly cookies** are essential for refresh token security
+- **Blacklist pattern** is simpler than token rotation for logout
+
+### Workflow Learnings
+- Parallel execution saved ~1 hour (3 tasks ran simultaneously)
+- `/delegate` helped visualize the execution plan before starting
+- Todo list kept us on track during execution
 
 ## What Went Well
-✅ Using /ai-kit:delegate helped write tests in parallel
-✅ Focus file kept us on track
-✅ Session planning at start helped estimate time well
+✅ Parallel task execution worked perfectly
+✅ All tests passing on first run
+✅ GitHub issue workflow integrated smoothly
+✅ Documentation updated alongside code
 
 ## What Could Be Better
-⚠️ Should have checked docker-compose volume docs first (lost 30 min)
-⚠️ Test writing took longer than expected
-⚠️ Need better error messages for auth failures
-
-## Next Steps
-- [ ] Add refresh token flow
-- [ ] Write integration tests
-- [ ] Document API endpoints
-- [ ] Add rate limiting
+⚠️ T3 (endpoint) took 48m vs estimated 45m - missed edge case
+⚠️ Should run linter after code changes
+⚠️ Could add more integration test scenarios
 
 ## Patterns Discovered
-Saved to `ψ/memory/patterns/parallel_testing_agent.md`
+
+📁 Saved to `ψ/memory/patterns/20260105_refresh_token_flow.md`
+- Refresh token generation pattern
+- Token blacklist for logout
+- Parallel task execution in workflow
+
+## Tricks Saved
+
+📁 Saved to `ψ/memory/tricks/20260105_python_jwt_tricks.md`
+- python-jose `encode()` with `headers` parameter
+- bcrypt `hashpw()` with `gensalt()` for secure hashing
+
+## Next Steps
+- [ ] Push to remote: `git push`
+- [ ] Deploy to staging environment
+- [ ] Monitor token refresh rate
+- [ ] Consider adding refresh token rotation
+
+## Metrics
+| Metric | Value |
+|--------|-------|
+| Tasks completed | 6/6 (100%) |
+| Time taken | 2h 57m |
+| Parallel efficiency | 25% time saved |
+| Test coverage | 47 passing tests |
+| Files changed | 5 files |
+| GitHub issues | 1 closed |
+
+## Session Stats
+- **Start**: 14:30
+- **End**: 17:27
+- **Duration**: 2h 57m
+- **Workflow**: /nnn → /breakdown → /delegate → /gogogo → /forward → /rrr
 
 ## Tags
-`authentication` `jwt` `python` `multi-agent`
+`authentication` `jwt` `refresh-token` `python` `parallel-execution`
 
----✅ Retro saved to ψ/memory/retros/2026-01-03_retro.md
+---
+
+✅ Retrospective saved: ψ/memory/retros/20260105_retro.md
+✅ Pattern saved: ψ/memory/patterns/20260105_refresh_token_flow.md
+✅ Tricks saved: ψ/memory/tricks/20260105_python_jwt_tricks.md
+
+---
+
+## Session Complete! 🎉
+
+Ready for next action:
+
+1. **Start new workflow**: /nnn "next feature"
+2. **Review retrospectives**: cat ψ/memory/retros/*.md
+3. **Take a break**: /pause
+4. **End session**: /clear
+
+What next?
+```
+
+## When to Use
+- After `/forward` completes
+- Finished a workflow cycle
+- Want to capture learnings
+- End of work session
+
+## Workflow Integration
+
+```
+/forward   → Status committed
+  ↓
+/rrr       → Capture retrospective
+  ↓
+✅ Complete
+  ↓
+/nnn       → Start next feature
+  or
+/clear     → End session
+```
+
+## Tips
+- `/rrr` captures patterns and tricks automatically
+- Retrospectives are saved with timestamps
+- Links to patterns/tricks for future reference
+- Metrics help track productivity over time
+- Tags make retros searchable
+
+## Retrospective Structure
+
+```
+ψ/memory/
+├── retros/
+│   ├── 20260105_retro.md
+│   ├── 20260104_retro.md
+│   └── ...
+├── patterns/
+│   ├── 20260105_refresh_token_flow.md
+│   └── ...
+├── tricks/
+│   ├── 20260105_python_jwt_tricks.md
+│   └── ...
+└── logs/
+    └── sessions.log
 ```

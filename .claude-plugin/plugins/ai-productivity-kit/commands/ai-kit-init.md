@@ -171,7 +171,6 @@ If not already present, adds:
 ## Related Commands
 - `/ai-kit:start` - Start a work session (also checks for CLAUDE.md)
 - `/ai-kit:focus` - Set current focus
-- `/ai-kit:awaken` - Full setup with all components
 - `/nat-agents-core:awaken` - Full setup with agents
 
 ## When to Use

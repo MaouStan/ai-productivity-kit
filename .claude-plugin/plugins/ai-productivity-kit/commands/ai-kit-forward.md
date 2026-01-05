@@ -1,127 +1,309 @@
 ---
-description: "Forward context to next session via WIP.md before /clear"
+description: "Commit task status to GitHub and forward context to next session"
 allowed-tools:
   - Bash
   - Read
   - Write
+  - AskUserQuestion
 ---
 
-# /ai-kit:forward
+# /forward
 
-**Forward Context to Next Session**
-*ส่ง context ไป session ถัดไป ก่อนใช้ /clear*
+**Forward Context + Commit Status**
+*ส่ง context ไป session ถัดไป + อัปเดตสถานะ GitHub*
+
+## Description
+
+Updates GitHub issue with task completion status, commits changes to git, and saves context to WIP.md for next session.
+
+## Workflow Position
+```
+/nnn → /breakdown → /delegate → /gogogo → /forward → /rrr
+```
 
 ## ทำอะไร
 
-**LAST command before `/clear`** - Saves session context so `/recap` can restore it.
+1. **Update GitHub issue** - Comment with completion status
+2. **Commit changes** - Git commit with summary
+3. **Create WIP.md** - Save context for next session
+4. **Optionally push** - Ask if user wants to push now
 
-1. อ่าน context ปัจจุบันทั้งหมด
-2. สร้าง `ψ/inbox/WIP.md`
-3. เก็บ:
-   - Current task
-   - Progress
-   - Next steps
-   - Important context
-4. พร้อมใช้ `/clear` แล้วเริ่มใหม่
+## AI Instructions
 
-## Template (WIP.md)
-```markdown
+เมื่อ user พิมพ์ `/forward`:
+
+### Step 1: Update GitHub Issue
+
+```bash
+# Get issue number from plan
+ISSUE_NUM=$(cat ψ/inbox/plan-*.md | grep "Issue #" | head -1 | sed 's/.*#//')
+
+# Create status comment
+gh issue comment $ISSUE_NUM --body "## ✅ Execution Complete
+
+### Tasks Completed: 6/6
+
+- [x] T1: Update User model
+- [x] T2: Token generation
+- [x] T3: /refresh endpoint
+- [x] T4: Token blacklist
+- [x] T5: API documentation
+- [x] T6: Integration tests
+
+### Test Results
+\`\`\`
+47 passed, 2 warnings
+\`\`\`
+
+### Files Changed
+- migrations/001_add_refresh_token.sql
+- src/auth/tokens.py
+- src/api/refresh.py
+- docs/auth.md
+- tests/test_refresh_flow.py
+
+---
+Executed: $(date)
+Duration: 2h 57m
+"
+
+# Close issue if all tasks done
+gh issue close $ISSUE_NUM --comment "All tasks completed successfully!"
+```
+
+### Step 2: Commit Changes
+
+```bash
+# Stage changes
+git add .
+
+# Commit with summary
+git commit -m "feat: refresh token system
+
+- Add refresh_token column to User model
+- Implement token generation and validation
+- Add POST /auth/refresh endpoint
+- Implement token blacklist for logout
+- Update API documentation
+- Add integration tests (47 passing)
+
+Closes #42"
+```
+
+### Step 3: Create WIP.md
+
+```bash
+cat > ψ/inbox/WIP.md << EOF
 # Work In Progress
 
-**Saved**: {{timestamp}}
-**Session**: {{session summary}}
+**Saved**: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+**Session**: Refresh Token System
 
-## Current Task
-{{จาก ψ/inbox/focus.md}}
+## Status
+✅ All tasks complete!
 
-## Progress
-✅ {{completed}}
-🔄 {{in progress}}
+## What Was Done
+- Implemented full refresh token flow
+- All tests passing (47 tests)
+- GitHub issue #42 closed
+- Changes committed
+
+## Files Changed
+- migrations/001_add_refresh_token.sql
+- src/auth/tokens.py
+- src/api/refresh.py
+- docs/auth.md
+- tests/test_refresh_flow.py
 
 ## Next Steps
-1. {{next 1}}
-2. {{next 2}}
+- [ ] Push to remote: git push
+- [ ] Create PR if needed
+- [ ] Deploy to staging
 
-## Important Context
-- {{context 1}}
-- {{context 2}}
+## Session Stats
+- Duration: 2h 57m
+- Tasks completed: 6/6
+- Parallel savings: ~1h
+EOF
+```
 
-## Files to Remember
-- {{file 1}} - {{note}}
-- {{file 2}} - {{note}}
+### Step 4: Ask About Push
+
+```
+✅ Status committed to git
+✅ GitHub issue updated
+✅ WIP.md created
+
+Push to remote now?
+  [1] Yes - git push
+  [2] No - push later
+  [3] Create PR instead
+
+Choice? [1-3]
+```
+
+## Template (GitHub Comment)
+```markdown
+## ✅ Execution Complete
+
+### Tasks Completed: N/N
+
+- [x] T1: Task name
+- [x] T2: Task name
+- [x] T3: Task name
+...
+
+### Test Results
+```
+<test output>
+```
+
+### Files Changed
+| File | Type |
+|------|------|
+| path/to/file | new/modified |
+
+### Execution Summary
+- **Duration**: Xh Ym
+- **Parallel tasks**: M
+- **Time saved**: ~Zh
+- **Test coverage**: N%
+
+---
+**Executed**: {{timestamp}}
+**Workflow**: /nnn → /breakdown → /delegate → /gogogo → /forward
 ```
 
 ## Example
+
 ```
 User: /forward
 
 AI:
-📤 Forwarding context to next session...
+📤 Forwarding context and committing status...
 
-Reading current state...
-✓ Found focus.md
-✓ Recent commits: 3
-✓ Recent issues: 2
+---
+[1/4] Reading execution results...
+
+✓ Found todo list: 6/6 tasks completed
+✓ Test results: 47 passed
+✓ Files changed: 5 files
+
+---
+[2/4] Updating GitHub issue...
+
+Issue #42: "Plan: Refresh Token System"
+
+Posting completion comment...
+✅ Comment added
+
+Closing issue...
+✅ Issue #42 closed
+
+---
+[3/4] Committing changes...
+
+git status:
+  modified:   src/models/user.py
+  new file:   src/auth/tokens.py
+  new file:   src/api/refresh.py
+  modified:   docs/auth.md
+  new file:   tests/test_refresh_flow.py
+
+git commit -m "feat: refresh token system
+- Add refresh_token column to User model
+- Implement token generation and validation
+- Add POST /auth/refresh endpoint
+- Implement token blacklist for logout
+- Update API documentation
+- Add integration tests (47 passing)
+Closes #42"
+
+✅ Committed: abc123f
+
+---
+[4/4] Creating WIP.md...
 
 ✅ Saved to ψ/inbox/WIP.md
 
 ---
-# Work In Progress
+## ✅ Forward Complete!
 
-**Saved**: 2026-01-03 15:30
-**Session**: JWT Auth Implementation
+### GitHub
+- Issue #42: **Closed**
+- Comment added with execution summary
+- Linked to commit abc123f
 
-## Current Task
-Implement JWT authentication with refresh tokens
+### Git
+- Branch: master
+- Commit: abc123f
+- Status: Clean (no uncommitted changes)
 
-## Progress
-✅ Completed:
-- User model updated
-- JWT middleware created
-- Login endpoint done
+### WIP.md
+- Saved: ψ/inbox/WIP.md
+- Ready for next session
 
-🔄 In Progress:
-- Refresh token endpoint (50%)
+### Next Steps
 
-## Next Steps
-1. Complete refresh validation
-2. Implement logout blacklist
-3. Write tests
+1. **Push to remote**:
+   ```bash
+   git push
+   ```
 
-## Important Context
-- Using python-jose library
-- Access token: 15 min, Refresh: 7 days
-- Store in httpOnly cookies
+2. **Start fresh session**:
+   ```bash
+   /clear
+   /recap  # continues from WIP.md
+   ```
 
-## Files to Remember
-- src/api/auth.py - Main auth logic
-- src/middleware/auth.py - JWT verification
-- tests/test_auth.py - Need to add tests
+3. **Capture retrospective**:
+   ```
+   /rrr
+   ```
 
 ---
+Push changes now?
 
-You can now:
-1. /clear → start fresh session
-2. Next session: /recap → continues work from WIP.md
+[1] Yes - git push origin master
+[2] No - I'll push later
+[3] Create PR instead
+
+Choice? [1-3]
 ```
 
-## Session Handoff Workflow
+## When to Use
+- After `/gogogo` completes all tasks
+- Ready to commit and save progress
+- Before `/clear` to start new session
+- Want to update GitHub issue status
+
+## Workflow Integration
 
 ```
-📤 END OF SESSION                   📥 START NEW SESSION
+/gogogo    → All tasks complete
+  ↓
+/forward   → Update GitHub + commit + WIP.md
+  ↓
+✅ Saved
+  ↓
+/rrr       → Retrospective (optional)
+  ↓
+/clear     → Start fresh
+```
+
+## Tips
+- `/forward` closes the GitHub issue when done
+- Creates detailed commit message with task summary
+- WIP.md preserves context for `/recap`
+- Ask before pushing - safe workflow
+- Use `/rrr` after for retrospective
+
+## Session Handoff
+
+```
+END OF SESSION                   START NEW SESSION
 ─────────────────────              ─────────────────────
 /forward  → Save to WIP.md         /recap   → Read WIP.md
 /clear    → Fresh start            ↓
                                   Continue where you left off
 ```
-
-## When to Use
-- **ALWAYS before `/clear`** (preserve context)
-- สลับ project
-- จบ session แต่ยังไม่เสร็จ
-- ก่อนออกจากงาน
-
-## Tips
-- WIP.md ถูกอ่านอัตโนมัติเมื่อใช้ `/recap`
-- ใช้ร่วมกับ `/ccc` เพื่อเก็บ context ครบ
-- ลบ WIP.md หลังจากทำเสร็จ

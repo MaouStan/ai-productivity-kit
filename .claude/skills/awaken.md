@@ -1,87 +1,56 @@
 # ai-kit:awaken
 
-**🔮 Awaken AI Productivity Kit - Install all commands and agents**
+**🔮 Awaken AI Productivity Kit - Setup git, remote, and command workflows**
 
 ## Description
-Initialize the AI Productivity Kit in the current project by installing all commands, skills, agents, and knowledge base.
+
+Lightweight project setup - initializes git repo, configures GitHub remote for issue tracking, creates command workflow templates, ψ/ structure, and runs team-configurator. **Does NOT copy commands/agents** - uses plugin references.
 
 ## What It Does
 
-### 1. Creates Directory Structure
-```
-.claude/
-├── commands/     # All slash commands
-├── agents/       # Agent definitions
-├── skills/       # Skill definitions
-└── knowledge/    # Documentation base
+### 1. Git Initialization
+- Checks if `.git/` exists
+- If not: runs `git init`
+- Commits initial project structure
 
+### 2. GitHub Remote Setup
+- Prompts for your GitHub repository URL
+- Sets `origin` remote
+- Enables issue tracking workflows
+
+### 3. Creates Plugin References (No Copying)
+- `.claude/commands-ref.md` - Reference to plugin commands
+- `.claude/agents-ref.md` - Reference to plugin agents
+- `.claude/skills-ref.md` - Reference to plugin skills
+
+**NOT copied** - commands/agents remain in plugin.
+
+### 4. GitHub Workflows for Commands
+- `.github/workflows/command-issue.yml` - Auto-create issues from commands
+- `.github/workflows/session-tracker.yml` - Track work sessions
+- `.github/workflows/retro-collector.yml` - Collect retrospectives
+
+### 5. Creates ψ/ Structure
+```
 ψ/
-├── active/       # Current research
-├── inbox/        # focus.md, messages
+├── active/       # Current research/work
+├── inbox/        # focus.md, WIP.md
 ├── memory/       # tricks, patterns, retros, logs
 ├── writing/      # Drafts
-└── lab/          # Experiments
+├── lab/          # Experiments
+└── learn/        # Learning materials
 ```
 
-### 2. Installs Components
-
-**Commands (15):**
-- Core: nnn, gogogo, rrr, ccc
-- Session: start, focus, pause, recap
-- Knowledge: note, trick, pattern, learn
-- Project: lll, hours, trace, forward
-- Tasks: breakdown, delegate
-
-**Agents (4):**
-- coder, debug-helper, test-writer, doc-writer
-
-**Skills (7):**
-- init, learn, review, debug, delegate, trick, pattern
-
-**Knowledge (6):**
-- comprehensive-guide.md
-- quick-reference.md
-- best-practices.md
-- ai-prompts.md
-- short-codes-workflow.md
-- ralph-concepts.md
-
-### 3. Creates Initial Files
-- `ψ/inbox/focus.md` - Current focus tracker
-- `.claude/knowledge/project-notes.md` - Project-specific notes
-- Updates `.gitignore` with ψ rules
+### 6. Runs team-configurator
+- Generates project-specific `CLAUDE.md`
 
 ## Usage
 
-### Option 1: Using the skill directly
 ```
-Run: /ai-kit:awaken
-```
-
-### Option 2: Manual installation
-```bash
-# Linux/Mac
-bash install.sh
-
-# Windows
-.\install.ps1
-
-# Or to specific directory
-bash install.sh /path/to/project
-```
-
-### Option 3: Global installation
-```bash
-# Install globally first
-bash install.sh --global
-
-# Then use in any project
-ai-kit init
+/ai-kit:awaken
 ```
 
 ## After Awaken
-
-Once awakened, you can use all commands:
 
 ```bash
 # Start session
@@ -93,50 +62,33 @@ Once awakened, you can use all commands:
 # Execute plan
 /gogogo
 
-# Save what you learned
-/ai-kit:trick python JWT handling is easier with python-jose
-
-# End session
+# End session with retro
 /rrr
 ```
+
+## GitHub Workflows
+
+The awaken command creates 3 GitHub Actions workflows:
+
+1. **Command Issue Generator** - Manually trigger to create issues from commands
+2. **Session Tracker** - Track start/pause/end sessions
+3. **Retrospective Collector** - Save retrospectives to repo
 
 ## Check Installation
 
 ```bash
 # Verify structure
-ls -la .claude/commands/
-ls -la .claude/agents/
-ls -la .claude/skills/
-ls -la .claude/knowledge/
+ls -la .claude/*-ref.md
+ls -la .github/workflows/
 ls -la ψ/
+git remote -v
 ```
-
-## Uninstall
-
-```bash
-# Remove files
-rm -rf .claude/commands/
-rm -rf .claude/agents/
-rm -rf .claude/skills/
-rm -rf .claude/knowledge/ai-kit-*
-rm -rf ψ/
-
-# Or if installed globally
-ai-kit uninstall    # (after global install)
-```
-
-## Integration with Other Tools
-
-The AI Productivity Kit works alongside:
-- **nat-agents-core** - Oracle philosophy commands
-- **Oracle MCP** - Knowledge retrieval
-- **Ralph** - Autonomous development loops
-- **MAW** - Multi-agent workflow
 
 ## Version Info
 
-- **Version**: 1.0.0
-- **Updated**: 2026-01-03
+- **Version**: 2.0.0
+- **Updated**: 2026-01-05
+- **Changes**: Git init, remote config, workflows, no file copying
 - **Compatible**: Claude Code 1.0+
 
 ---

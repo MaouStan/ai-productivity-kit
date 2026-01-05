@@ -18,14 +18,14 @@ If this is your first time using the kit, run setup first:
 
 ```bash
 # Option 1: Full setup (recommended)
-/ai-kit:awaken            # Sets up all commands, agents, skills, CLAUDE.md, ψ/ structure
+/nat-agents-core:awaken   # Sets up agents/, CLAUDE.md, ψ/ structure
 
 # Option 2: Quick setup
 /ai-kit:init              # Initialize ψ/ structure + CLAUDE.md
 ```
 
 ## ทำอะไร
-- ตรวจสอบ CLAUDE.md ถ้าไม่มีจะ **auto-run** team-configurator
+- ตรวจสอบ CLAUDE.md ถ้าไม่มีจะเสนอให้รัน team-configurator
 - แสดงสถานะปัจจุบัน (จาก `ψ/inbox/focus.md`)
 - ถามหัวใจงานวันนี้
 - สร้าง todo list ถ้ายังไม่มี
@@ -113,18 +113,19 @@ Checking project configuration...
 
 ⚠️ No CLAUDE.md found in project root.
 
-Auto-running team-configurator to create CLAUDE.md...
+CLAUDE.md helps Claude understand your project's tech stack, agents, and workflows.
 
+Run team-configurator to auto-generate CLAUDE.md based on your codebase? [Y/n]
+
+User: Y
+
+AI: Running team-configurator agent...
 [Analyzes codebase, detects tech stack, creates CLAUDE.md]
-
 ✅ CLAUDE.md created with project-specific configuration!
-
-Now continuing with session start...
 ```
 
 ## Related Commands
 - `/ai-kit:init` - Initialize ψ/ structure + CLAUDE.md (auto-runs team-configurator)
-- `/ai-kit:awaken` - Full setup with all components
 - `/ai-kit:focus` - Set focus for current task
 - `/ai-kit:pause` - Pause work temporarily
 - `/recap` - View current status
