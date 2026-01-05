@@ -61,6 +61,11 @@ nnn -> gogogo -> rrr -> ccc
 Plan -> Execute -> Review -> Save Context
 ```
 
+**NO CODE Policy**:
+- `/nnn`, `/breakdown`, `/delegate` - Create plans ONLY, do NOT execute
+- `/gogogo` - ONLY command that executes code
+- All other commands - Data capture, state tracking, or read-only
+
 **Three Principles**:
 1. Nothing is Deleted - Keep history with timestamps
 2. Patterns Over Intentions - Learn from behavior

@@ -9,6 +9,11 @@ allowed-tools:
 **บันทึก note ด่วน**
 *Quick note capture*
 
+## ⚠️ NO CODE - DATA CAPTURE ONLY
+**This command does NOT write code.** It ONLY saves notes to memory.
+- ✅ Creates: Notes in ψ/memory/logs/
+- ❌ Does NOT: Write code, modify project files
+
 ## ทำอะไร
 - สร้าง note ใหม่ใน `ψ/memory/logs/`
 - ใส่ timestamp อัตโนมัติ

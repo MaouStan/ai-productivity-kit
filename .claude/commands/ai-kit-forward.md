@@ -12,6 +12,12 @@ allowed-tools:
 **Forward Context + Commit Status**
 *ส่ง context ไป session ถัดไป + อัปเดตสถานะ GitHub*
 
+## ⚠️ NO CODE - CONTEXT HANDOFF ONLY
+**This command does NOT write NEW code.** It ONLY commits existing changes and saves context.
+- ✅ Creates: Git commits, GitHub issue comments, WIP.md
+- ❌ Does NOT: Write new code, implement features
+- Code execution happens in `/gogogo` before this
+
 ## Description
 
 Updates GitHub issue with task completion status, commits changes to git, and saves context to WIP.md for next session.

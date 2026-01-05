@@ -13,6 +13,12 @@ allowed-tools:
 **New Plan - Create Implementation Plan**
 *สร้างแผนงาน implementation พร้อม task breakdown*
 
+## ⚠️ NO CODE - PLAN ONLY
+**This command does NOT write code.** It ONLY creates plans and GitHub issues.
+- ✅ Creates: GitHub issues, task breakdowns, todo lists
+- ❌ Does NOT: Write code, modify files, execute changes
+- Use `/gogogo` to execute the plan
+
 ## Description
 
 Analyzes requirements and creates a GitHub issue with full implementation plan. First command in the workflow chain.

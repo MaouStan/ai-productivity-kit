@@ -12,6 +12,12 @@ allowed-tools:
 **Retro-Reflect-Review - ทบทวนงานที่ทำไป**
 *Session retrospective after completing workflow*
 
+## ⚠️ NO CODE - RETROSPECTIVE ONLY
+**This command does NOT write code.** It ONLY summarizes and saves learnings.
+- ✅ Creates: Retrospectives in ψ/memory/retros/
+- ❌ Does NOT: Write code, modify project files
+- Code execution happens in `/gogogo` before this
+
 ## Description
 
 Captures retrospective after completing the workflow. Documents what was done, what was learned, and next steps. Saves to `ψ/memory/retros/`.

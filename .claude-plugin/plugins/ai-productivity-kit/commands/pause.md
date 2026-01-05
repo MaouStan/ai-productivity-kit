@@ -9,6 +9,11 @@ allowed-tools:
 **พักงานชั่วคราว**
 *Pause current work session*
 
+## ⚠️ NO CODE - STATE TRACKING ONLY
+**This command does NOT write code.** It ONLY saves current state to resume later.
+- ✅ Creates: Pause state in ψ/inbox/
+- ❌ Does NOT: Write code, modify project files
+
 ## ทำอะไร
 - บันทึกสถานะปัจจุบัน
 - เปลี่ยน state เป็น "paused"

@@ -18,7 +18,7 @@ If this is your first time using the kit, run setup first:
 
 ```bash
 # Option 1: Full setup (recommended)
-/nat-agents-core:awaken   # Sets up agents/, CLAUDE.md, ψ/ structure
+/ai-kit:awaken            # Sets up git, remote, workflows, CLAUDE.md
 
 # Option 2: Quick setup
 /ai-kit:init              # Initialize ψ/ structure + CLAUDE.md

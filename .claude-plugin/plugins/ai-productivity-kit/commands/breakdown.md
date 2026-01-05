@@ -13,6 +13,12 @@ allowed-tools:
 **แบ่งงานใหญ่เป็น task เล็กๆ**
 *Break complex task into smaller pieces, then wait*
 
+## ⚠️ NO CODE - PLAN ONLY
+**This command does NOT write code.** It ONLY organizes tasks into todo lists.
+- ✅ Creates: Todo lists, task organization, execution plan
+- ❌ Does NOT: Write code, modify files, execute changes
+- Use `/gogogo` to execute the plan
+
 ## Description
 
 Reads the plan from `/nnn` and breaks it into smaller, executable tasks. Organizes tasks into sequential and parallel groups. **WAITs for user confirmation before proceeding.**

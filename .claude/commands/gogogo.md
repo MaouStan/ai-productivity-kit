@@ -15,6 +15,14 @@ allowed-tools:
 **Execute Plan - Launch Agents**
 *ลงมือทำตามแผน - เริ่ม agents แบบ parallel*
 
+## ⚠️ ONLY THIS COMMAND WRITES CODE
+**This is the ONLY command that executes code changes.**
+- ✅ DOES: Write code, launch agents, execute tasks, run tests
+- ❌ Other commands (/nnn, /breakdown, /delegate, etc.) ONLY plan
+- **ALL other commands are NO CODE - PLAN ONLY**
+
+**Workflow**: `/nnn` → `/breakdown` → `/delegate` → `/gogogo` (code execution here)
+
 ## Description
 
 Launches agents according to the plan from `/delegate`. Executes tasks in waves (sequential first, then parallel). Runs tests after completion. Updates progress in real-time.

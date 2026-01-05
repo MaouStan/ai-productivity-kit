@@ -11,6 +11,11 @@ allowed-tools:
 **Search Everything in Project**
 *ค้นหาทุกที่ใน project - git, files, issues, memory*
 
+## ⚠️ NO CODE - READ ONLY
+**This command does NOT write code.** It ONLY searches and displays results.
+- ✅ Reads: Git history, files, issues, memory
+- ❌ Does NOT: Write code, modify files, make changes
+
 ## ทำอะไร
 ค้นหา query ใน:
 - Git history (commits, messages)

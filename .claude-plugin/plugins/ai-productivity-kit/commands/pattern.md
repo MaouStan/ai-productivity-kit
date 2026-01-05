@@ -9,6 +9,11 @@ allowed-tools:
 **บันทึก pattern ที่ใช้ซ้ำได้**
 *Record reusable patterns*
 
+## ⚠️ NO CODE - DATA CAPTURE ONLY
+**This command does NOT write code.** It ONLY saves patterns to memory.
+- ✅ Creates: Patterns in ψ/memory/patterns/
+- ❌ Does NOT: Write code, modify project files
+
 ## ทำอะไร
 - สกัด pattern จากประสบการณ์
 - บันทึกลง `ψ/memory/patterns/`

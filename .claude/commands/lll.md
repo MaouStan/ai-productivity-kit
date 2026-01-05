@@ -10,6 +10,11 @@ allowed-tools:
 **List Project Status**
 *แสดงสถานะ project ทั้งหมด - issues, PRs, commits, branches*
 
+## ⚠️ NO CODE - READ ONLY
+**This command does NOT write code.** It ONLY reads and displays project status.
+- ✅ Reads: Git status, issues, PRs, branches
+- ❌ Does NOT: Write code, modify files, make changes
+
 ## ทำอะไร
 แสดงภาพรวมของ project:
 - Issues (open, in_progress, closed)

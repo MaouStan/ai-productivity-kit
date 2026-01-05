@@ -12,6 +12,11 @@ allowed-tools:
 **Create Context Issue + Compact Conversation**
 *สร้าง context issue และย่อ conversation เพื่อ save tokens*
 
+## ⚠️ NO CODE - CONTEXT SAVE ONLY
+**This command does NOT write code.** It ONLY saves context to GitHub issues.
+- ✅ Creates: GitHub context issues
+- ❌ Does NOT: Write code, modify project files
+
 ## ทำอะไร
 1. สร้าง GitHub issue เพื่อเก็บ session context
 2. สรุป conversation ทั้งหมด

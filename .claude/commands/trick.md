@@ -9,6 +9,11 @@ allowed-tools:
 **บันทึกเทคนิคโค้ดดีๆ**
 *Save useful code tricks*
 
+## ⚠️ NO CODE - DATA CAPTURE ONLY
+**This command does NOT write code.** It ONLY saves tricks to memory.
+- ✅ Creates: Tricks in ψ/memory/tricks/
+- ❌ Does NOT: Write code, modify project files
+
 ## ทำอะไร
 - บันทึก trick ลง `ψ/memory/tricks/`
 - จัดหมวดหมู่ตามภาษา/เฟรมเวิร์ก

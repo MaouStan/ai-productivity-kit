@@ -13,6 +13,11 @@ allowed-tools:
 **Learn from web content or files and generate knowledge + skills**
 *เรียนรู้จากเว็บหรือไฟล์ สร้างความรู้และทักษะ*
 
+## ⚠️ NO CODE - KNOWLEDGE CAPTURE ONLY
+**This command does NOT write code.** It ONLY saves learned content to memory.
+- ✅ Creates: Knowledge in ψ/memory/, skills in .claude/skills/
+- ❌ Does NOT: Write code, modify project files
+
 ## ทำอะไร
 
 AI จะ:

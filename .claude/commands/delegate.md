@@ -14,6 +14,12 @@ allowed-tools:
 **มอบหมายงานให้ subagent**
 *Assign agents to parallel tasks, then wait*
 
+## ⚠️ NO CODE - PLAN ONLY
+**This command does NOT write code.** It ONLY assigns agents to tasks.
+- ✅ Creates: Agent assignments, execution plan display
+- ❌ Does NOT: Write code, launch agents, execute changes
+- Use `/gogogo` to launch agents and execute
+
 ## Description
 
 Reviews the task breakdown from `/breakdown` and assigns specific agents to each task. Shows parallel execution groups. **WAITs for user confirmation before launching agents.**

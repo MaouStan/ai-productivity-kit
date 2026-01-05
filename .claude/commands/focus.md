@@ -9,6 +9,11 @@ allowed-tools:
 **ตั้งค่าโฟกัสงานปัจจุบัน**
 *Set current task focus*
 
+## ⚠️ NO CODE - STATE TRACKING ONLY
+**This command does NOT write code.** It ONLY updates the focus tracker.
+- ✅ Creates: Focus state in ψ/inbox/focus.md
+- ❌ Does NOT: Write code, modify project files
+
 ## ทำอะไร
 - บันทึกงานที่กำลังทำลง `ψ/inbox/focus.md`
 - อัปเดต state เป็น "working"
